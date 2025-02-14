@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tomato Price Calculator</title>
+  </head>
+  <body>
+    <h2>Tomato Price Profit Calculator</h2>
+    <button onclick="calculateProfit()">Enter Prices & Check Profit</button>
+    <p id="result"></p>
+
+    <script>
+      function calculateProfit() {
+        let prices = [];
+        let days = [
+          "Monday",
+          "Tuesday",
+          "Wednesday",
+          "Thursday",
+          "Friday",
+          "Saturday",
+          "Sunday",
+        ];
+        let total = 0;
+
+        for (let i = 0; i < days.length; i++) {
+          let price = parseFloat(
+            prompt(`Enter the price of 1kg tomato on ${days[i]}:`)
+          );
+          if (isNaN(price) || price < 0) {
+            alert("Please enter a valid positive number.");
+            return;
+          }
+          prices.push(price);
+          total += price;
+        }
+
+        let average = total / prices.length;
+        let message =
+          average > 50
+            ? "Tomato has given good profit."
+            : "No profit from tomato.";
+
+        document.getElementById(
+          "result"
+        ).innerHTML = `Average Price: Rs.${average.toFixed(2)}<br>${message}`;
+        console.log("Prices:", prices);
+        console.log("Average Price:", average);
+      }
+    </script>
+  </body>
+</html>
