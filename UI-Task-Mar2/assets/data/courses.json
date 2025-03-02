@@ -1,0 +1,52 @@
+[
+  {
+    "id": 1,
+    "title": "Web Development Mastery",
+    "category": "tech",
+    "description": "Master modern web development with HTML, CSS, and JS",
+    "instructor": "Ramesh",
+    "image": "assets/images/course1.jpg",
+    "prerequisites": "Basic computer skills",
+    "rating": 4.8
+  },
+  {
+    "id": 2,
+    "title": "Business Strategy Essentials",
+    "category": "business",
+    "description": "Learn core business strategies and management",
+    "instructor": "Suresh",
+    "image": "assets/images/course2.jpg",
+    "prerequisites": "None",
+    "rating": 4.6
+  },
+  {
+    "id": 3,
+    "title": "Advanced Python Programming",
+    "category": "tech",
+    "description": "Deep dive into Python for data science and automation",
+    "instructor": "Dinesh",
+    "image": "assets/images/course3.jpg",
+    "prerequisites": "Basic programming knowledge",
+    "rating": 4.9
+  },
+  {
+    "id": 4,
+    "title": "Digital Marketing Pro",
+    "category": "business",
+    "description": "Master SEO, social media, and content marketing",
+    "instructor": "Sarah",
+    "image": "assets/images/course4.jpg",
+    "prerequisites": "None",
+    "rating": 4.7
+  },
+  {
+    "id": 5,
+    "title": "UI/UX Design Fundamentals",
+    "category": "tech",
+    "description": "Create user-friendly interfaces with modern tools",
+    "instructor": "Emily",
+    "image": "assets/images/course5.jpg",
+    "prerequisites": "Basic design concepts",
+    "rating": 4.8
+  }
+]
