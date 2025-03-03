@@ -79,7 +79,6 @@ class RoutineDisplay {
   }
 
   private completeWorkout(index: number): void {
-    // Mark the routine as completed
     this.workouts[index].completed = true;
     this.saveWorkouts();
     this.saveProgress(this.workouts[index]);
