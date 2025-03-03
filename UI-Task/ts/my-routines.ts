@@ -41,7 +41,6 @@ class RoutineDisplay {
   }
 
   private displayRoutines(): void {
-    // Clear the grid and remove any existing event listeners
     this.routineGrid.innerHTML =
       this.workouts.length === 0
         ? '<p style="text-align: center; color: #666;">No routines found.</p>'
@@ -68,7 +67,6 @@ class RoutineDisplay {
           `;
       this.routineGrid.appendChild(card);
 
-      // Add event listener directly to the button
       const completeBtn = card.querySelector(
         ".complete-workout"
       ) as HTMLButtonElement;
@@ -86,7 +84,7 @@ class RoutineDisplay {
     this.saveWorkouts();
     this.saveProgress(this.workouts[index]);
     alert("Workout completed!");
-    this.displayRoutines(); // Re-render the UI
+    this.displayRoutines(); 
   }
 }
 
