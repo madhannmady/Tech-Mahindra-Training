@@ -1,0 +1,17 @@
+{
+  "name": "fitness-routine-planner",
+  "version": "1.0.0",
+  "description": "A fitness routine planner application",
+  "scripts": {
+    "start": "tsc && live-server --open=index.html",
+    "build": "tsc"
+  },
+  "dependencies": {
+    "chart.js": "^4.4.4",
+    "fitness-routine-planner": "file:"
+  },
+  "devDependencies": {
+    "live-server": "^1.2.2",
+    "typescript": "^5.5.4"
+  }
+}

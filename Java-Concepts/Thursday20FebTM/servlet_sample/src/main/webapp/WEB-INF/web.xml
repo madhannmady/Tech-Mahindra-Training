@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns="https://jakarta.ee/xml/ns/jakartaee"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="https://jakarta.ee/xml/ns/jakartaee https://jakarta.ee/xml/ns/jakartaee/web-app_6_0.xsd"
+         version="6.0">
+
+    <welcome-file-list>
+        <welcome-file>index.html</welcome-file>
+    </welcome-file-list>
+
+    <servlet>
+        <servlet-name>Login</servlet-name>
+        <servlet-class>com.example.sample.Validation</servlet-class>
+    </servlet>
+
+    <servlet>
+        <servlet-name>WelcomeUser</servlet-name>
+        <servlet-class>com.example.sample.WelcomeUser</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>Login</servlet-name>
+        <url-pattern>/loginPage</url-pattern>
+    </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>WelcomeUser</servlet-name>
+        <url-pattern>/welcomeuser</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>InitParamExample</servlet-name>
+        <servlet-class>com.example.sample.MyServlet</servlet-class>
+        <init-param>
+            <param-name>address</param-name>
+            <param-value>Chennai</param-value>
+        </init-param>
+        <init-param>
+            <param-name>email</param-name>
+            <param-value>abcd@gmail.com</param-value>
+        </init-param>
+        <init-param>
+            <param-name>phone</param-name>
+            <param-value>9384564715</param-value>
+        </init-param>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>InitParamExample</servlet-name>
+        <url-pattern>/InitParamExample</url-pattern>
+    </servlet-mapping>
+
+
+    <context-param>
+        <param-name> n1 </param-name>
+        <param-value> ABCD </param-value>
+    </context-param>
+    <context-param>
+        <param-name> n2  </param-name>
+        <param-value> AIA </param-value>
+    </context-param>
+    <servlet>
+        <servlet-name>onServletContext</servlet-name>
+        <servlet-class>com.example.sample .OnServletContext</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>onServletContext</servlet-name>
+        <url-pattern>/onContext</url-pattern>
+    </servlet-mapping>
+
+
+    <servlet>
+        <servlet-name>Validate</servlet-name>
+        <servlet-class>com.example.sample.Validate</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>Welcome</servlet-name>
+        <servlet-class>com.example.sample.Welcome</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>Validate</servlet-name>
+        <url-pattern>/Validate</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Welcome</servlet-name>
+        <url-pattern>/Welcome</url-pattern>
+    </servlet-mapping>
+
+
+    <servlet>
+        <servlet-name>SetUrlParameterServlet</servlet-name>
+        <servlet-class>com.example.sample.SetUrlParameterServlet</servlet-class>
+    </servlet>
+
+    <servlet>
+        <servlet-name>GetUrlParameterServlet</servlet-name>
+        <servlet-class>com.example.sample.GetUrlParameterServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>SetUrlParameterServlet</servlet-name>
+        <url-pattern>/SetUrlParameterServlet</url-pattern>
+    </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>GetUrlParameterServlet</servlet-name>
+        <url-pattern>/GetUrlParameterServlet</url-pattern>
+    </servlet-mapping>
+
+
+
+    <servlet>
+        <servlet-name>CreateCookieServlet</servlet-name>
+        <servlet-class>com.example.sample.CreateCookieServlet</servlet-class>
+    </servlet>
+
+    <servlet>
+        <servlet-name>GetCookieServlet</servlet-name>
+        <servlet-class>com.example.sample.GetCookieServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>CreateCookieServlet</servlet-name>
+        <url-pattern>/CreateCookieServlet</url-pattern>
+    </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>GetCookieServlet</servlet-name>
+        <url-pattern>/GetCookieServlet</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>DeleteCookieServlet</servlet-name>
+        <servlet-class>com.example.sample.DeleteCookieServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>DeleteCookieServlet</servlet-name>
+        <url-pattern>/DeleteCookieServlet</url-pattern>
+    </servlet-mapping>
+
+
+
+
+    <servlet>
+        <servlet-name>WelcomeServlet</servlet-name>
+        <servlet-class>
+            com.example.sample.WelcomeServlet
+        </servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>WelcomeServlet</servlet-name>
+        <url-pattern>/WelcomeServlet</url-pattern>
+    </servlet-mapping>
+    <filter>
+        <filter-name>MyFilter</filter-name>
+        <filter-class>
+            com.example.sample.MyFilter
+        </filter-class>
+        <init-param>
+            <param-name>appUser</param-name>
+            <param-value>jai</param-value>
+        </init-param>
+    </filter>
+    <filter-mapping>
+        <filter-name>MyFilter</filter-name>
+        <url-pattern>/WelcomeServlet</url-pattern>
+    </filter-mapping>
+
+</web-app>

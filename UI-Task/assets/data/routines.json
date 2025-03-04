@@ -1,0 +1,14 @@
+[
+  {
+    "name": "Cardio Blast",
+    "category": "cardio",
+    "description": "High-intensity cardio workout.",
+    "image": "assets/images/workout2.jpg"
+  },
+  {
+    "name": "Strength Training",
+    "category": "strength",
+    "description": "Build muscle with this routine.",
+    "image": "assets/images/workout3.jpg"
+  }
+]
