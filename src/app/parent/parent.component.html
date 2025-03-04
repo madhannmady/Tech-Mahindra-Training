@@ -1,0 +1,10 @@
+<div class="parent-container">
+  <h2>Parent Container</h2>
+  <button *ngFor="let item of parentItems" (click)="moveToChild(item)">
+    {{ item }}
+  </button>
+</div>
+<app-child
+  [childItems]="childItems"
+  (itemMovedToParent)="moveToParent($event)"
+></app-child>
