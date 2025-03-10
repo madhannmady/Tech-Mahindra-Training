@@ -1,0 +1,25 @@
+.about-container {
+  padding: 2rem 1rem;
+  text-align: center;
+}
+
+h1 {
+  font-size: 3.125rem;
+  font-weight: 500;
+  line-height: 100%;
+  letter-spacing: -0.125rem;
+  margin: 1.75rem 0 0;
+  font-family: "Inter Tight", sans-serif;
+}
+
+p {
+  margin: 1.5rem 0;
+  font-size: 1.2rem;
+}
+
+@media screen and (max-width: 650px) {
+  .about-container {
+    width: 90%;
+    margin: 0 auto;
+  }
+}
