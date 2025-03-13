@@ -1,0 +1,36 @@
+<h3>Our Projects</h3>
+
+<!-- Filters Section -->
+<div class="filters-section">
+  <h4>Filter Projects</h4>
+
+  <div class="filter-group">
+    <label for="statusFilter">Filter by Status:</label>
+    <select id="statusFilter" [(ngModel)]="selectedStatus">
+      <option value="">All</option>
+      <option value="active">Active</option>
+      <option value="completed">Completed</option>
+      <option value="planning">Planning</option>
+    </select>
+  </div>
+
+  <div class="filter-group">
+    <label for="minTeamSize">Min Team Size:</label>
+    <input id="minTeamSize" type="number" [(ngModel)]="minTeamSize" />
+
+    <label for="maxTeamSize">Max Team Size:</label>
+    <input id="maxTeamSize" type="number" [(ngModel)]="maxTeamSize" />
+  </div>
+</div>
+
+<!-- Projects Section -->
+<div class="projects-section">
+  <app-project-card
+    *ngFor="
+      let project of projectlist
+        | projectStatusFilter : selectedStatus
+        | teamSizeFilter : minTeamSize : maxTeamSize
+    "
+    [project]="project"
+  ></app-project-card>
+</div>
