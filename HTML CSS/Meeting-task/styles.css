@@ -1,0 +1,90 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&display=swap");
+
+body {
+  font-family: "Poppins", sans-serif;
+}
+
+header {
+  background-color: #1a252f;
+}
+
+.hero {
+  background-color: #1a252f;
+}
+
+.hero h2 {
+  font-size: 3.5rem;
+  line-height: 1.2;
+}
+
+.hero p {
+  color: #d3d3d3;
+}
+
+.carousel-item img {
+  border-radius: 10px;
+  height: 400px;
+  object-fit: cover;
+}
+
+.carousel-caption {
+  bottom: 10px;
+  background-color: rgba(0, 0, 0, 0.5);
+  border-radius: 5px;
+}
+
+.features {
+  background-color: #f8f9fa;
+}
+
+.feature-icon img {
+  width: 150px;
+  height: 150px;
+  object-fit: contain;
+}
+
+.features .col-md-4 img:not(.feature-icon img) {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 10px;
+}
+
+.features .col-md-4 {
+  padding: 20px;
+}
+
+.features h5 {
+  margin-top: 20px;
+  font-size: 1.25rem;
+}
+
+.features p {
+  margin-top: 10px;
+  font-size: 0.9rem;
+}
+
+.features .btn {
+  margin-top: 15px;
+}
+
+.recent-work img {
+  width: 100%;
+  height: 300px;
+  object-fit: cover;
+  border-radius: 10px;
+}
+
+.tweet {
+  background-color: #e9ecef;
+}
+
+.tweet img {
+  width: 30px;
+  height: 30px;
+  vertical-align: middle;
+}
+
+footer {
+  background-color: #1a252f;
+}
