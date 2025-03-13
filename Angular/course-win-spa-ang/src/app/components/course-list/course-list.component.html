@@ -1,0 +1,41 @@
+<div class="container">
+  <h1>Welcome to Course-Win</h1>
+  <p>
+    Unleash your game development potential with industry-leading courses
+    designed by experts.
+  </p>
+  <div class="buttons">
+    <a routerLink="/courses" class="btn">Explore Courses</a>
+    <a routerLink="/best-selling" class="btn btn-secondary">Best Selling</a>
+    <a routerLink="/about-us" class="btn btn-secondary">About Us</a>
+    <a routerLink="/plans-pricing" class="btn btn-secondary">Plans & Pricing</a>
+    <a routerLink="/feedback" class="btn btn-secondary">Feedback</a>
+  </div>
+  <hr />
+
+  <h2>Explore Our Courses</h2>
+
+  <form [formGroup]="filterForm">
+    <select formControlName="category">
+      <option value="">All Categories</option>
+      <option *ngFor="let category of categories" [value]="category">
+        {{ category }}
+      </option>
+    </select>
+    <input type="number" formControlName="minPrice" placeholder="Min Price" />
+    <input type="number" formControlName="maxPrice" placeholder="Max Price" />
+    <input
+      type="text"
+      formControlName="searchTerm"
+      placeholder="Search courses..."
+    />
+  </form>
+
+  <div class="course-grid">
+    <app-course-card
+      *ngFor="let course of courses | filterCourse : filterForm.value"
+      [course]="course"
+    >
+    </app-course-card>
+  </div>
+</div>

@@ -1,0 +1,8 @@
+<nav class="navbar">
+  <div class="logo">Course-Win</div>
+  <ul class="nav-links">
+    <li *ngFor="let item of navItems">
+      <a [routerLink]="item.path" routerLinkActive="active">{{ item.name }}</a>
+    </li>
+  </ul>
+</nav>
