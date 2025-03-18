@@ -25,7 +25,7 @@ class AppLocalizations {
       'no_articles': 'No articles available',
       'article_detail': 'Article Detail',
       'profile': 'Profile',
-      'category_empty': 'Category cannot be empty', // New key
+      'category_empty': 'Category cannot be empty', 
     },
     'ta': {
       'app_title': 'கட்டுரை ஊட்டம்',
@@ -45,7 +45,7 @@ class AppLocalizations {
       'no_articles': 'கட்டுரைகள் இல்லை',
       'article_detail': 'கட்டுரை விவரம்',
       'profile': 'சுயவிவரம்',
-      'category_empty': 'வகை காலியாக இருக்கக்கூடாது', // Tamil translation
+      'category_empty': 'வகை காலியாக இருக்கக்கூடாது', 
     },
   };
 
