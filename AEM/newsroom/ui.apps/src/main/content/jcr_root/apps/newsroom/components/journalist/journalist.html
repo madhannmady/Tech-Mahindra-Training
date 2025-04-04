@@ -1,0 +1,23 @@
+<div
+  class="journalist"
+  data-sly-use.journalist="com.newsroom.core.models.JournalistModel"
+>
+  <h2>About the Journalist</h2>
+  <div class="journalist-content">
+    <img
+      data-sly-test="${journalist.profileImage}"
+      src="${journalist.profileImage}"
+      alt="Journalist Profile"
+      class="profile-image"
+    />
+    <div class="journalist-details">
+      <h3>${journalist.name}</h3>
+      <p><strong>Bio:</strong> ${journalist.bio}</p>
+      <p><strong>Experience:</strong> ${journalist.experience}</p>
+      <p>
+        <strong>Email:</strong>
+        <a href="${journalist.emailLink}">${journalist.email}</a>
+      </p>
+    </div>
+  </div>
+</div>

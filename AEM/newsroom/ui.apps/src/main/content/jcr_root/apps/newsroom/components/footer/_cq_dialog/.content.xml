@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jcr:root xmlns:sling="http://sling.apache.org/jcr/sling/1.0"
+          xmlns:cq="http://www.day.com/jcr/cq/1.0"
+          xmlns:jcr="http://www.jcp.org/jcr/1.0"
+          jcr:primaryType="nt:unstructured"
+          sling:resourceType="cq/gui/components/authoring/dialog">
+    
+    <content jcr:primaryType="nt:unstructured"
+             sling:resourceType="granite/ui/components/coral/foundation/container">
+        <items jcr:primaryType="nt:unstructured">
+
+            <aboutMe jcr:primaryType="nt:unstructured"
+                     sling:resourceType="granite/ui/components/coral/foundation/form/textarea"
+                     fieldLabel="About Me"
+                     name="./aboutMe"/>
+
+            <email jcr:primaryType="nt:unstructured"
+                   sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                   fieldLabel="Email"
+                   name="./email"/>
+
+            <phone jcr:primaryType="nt:unstructured"
+                   sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                   fieldLabel="Phone"
+                   name="./phone"/>
+
+            <twitter jcr:primaryType="nt:unstructured"
+                     sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                     fieldLabel="Twitter URL"
+                     name="./twitter"/>
+
+            <linkedin jcr:primaryType="nt:unstructured"
+                      sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                      fieldLabel="LinkedIn URL"
+                      name="./linkedin"/>
+
+            <instagram jcr:primaryType="nt:unstructured"
+                       sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                       fieldLabel="Instagram URL"
+                       name="./instagram"/>
+        </items>
+    </content>
+</jcr:root>
