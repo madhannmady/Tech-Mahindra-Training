@@ -1,0 +1,180 @@
+scheduler/SimpleScheduledTask.java Code 
+
+import org.osgi.service.component.annotations.Activate;
+import org.osgi.service.component.annotations.Component;
+import org.osgi.service.metatype.annotations.AttributeDefinition;
+import org.osgi.service.metatype.annotations.Designate;
+import org.osgi.service.metatype.annotations.ObjectClassDefinition;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+/**
+ * A simple demo for cron-job like tasks that get executed regularly.
+ * It also demonstrates how property values can be set. Users can
+ * set the property values in /system/console/configMgr
+ */
+@Designate(ocd=SimpleScheduledTask.Config.class)
+@Component(service=Runnable.class)
+public class SimpleScheduledTask implements Runnable {
+
+    @ObjectClassDefinition(name="A scheduled task",
+                           description = "Simple demo for cron-job like task with properties")
+    public static @interface Config {
+
+        @AttributeDefinition(name = "Cron-job expression")
+        String scheduler_expression() default "*/30 * * * * ?";
+
+        @AttributeDefinition(name = "Concurrent task",
+                             description = "Whether or not to schedule this task concurrently")
+        boolean scheduler_concurrent() default false;
+
+        @AttributeDefinition(name = "A parameter",
+                             description = "Can be configured in /system/console/configMgr")
+        String myParameter() default "";
+    }
+
+    private final Logger logger = LoggerFactory.getLogger(getClass());
+
+    private String myParameter;
+    
+    @Override
+    public void run() {
+        logger.debug("SimpleScheduledTask is now running, myParameter='{}'", myParameter);
+    }
+
+    @Activate
+    protected void activate(final Config config) {
+        myParameter = config.myParameter();
+    }
+
+}
+
+*****************************************************
+
+.content.xml
+
+<!-- /apps/myproject/workflow/models/mycustomworkflow/.content.xml -->
+<?xml version="1.0" encoding="UTF-8"?>
+<jcr:root xmlns:cq="http://www.day.com/jcr/cq/1.0" 
+    xmlns:jcr="http://www.jcp.org/jcr/1.0" 
+    xmlns:nt="http://www.jcp.org/jcr/nt/1.0"
+    jcr:primaryType="cq:WorkflowModel"
+    description="My Custom Workflow"
+    title="My Custom Workflow">
+    <nodes jcr:primaryType="nt:unstructured">
+        <node0 jcr:primaryType="cq:WorkflowNode"
+            title="Start"
+            type="START"/>
+        <node1 jcr:primaryType="cq:WorkflowNode"
+            title="Print Page Title Process"
+            type="PROCESS"
+            process="com.myproject.workflow.PrintPageTitleProcess"/>
+        <node2 jcr:primaryType="cq:WorkflowNode"
+            title="End"
+            type="END"/>
+    </nodes>
+    <transitions jcr:primaryType="nt:unstructured">
+        <transition0 jcr:primaryType="cq:WorkflowTransition"
+            from="node0"
+            to="node1"/>
+        <transition1 jcr:primaryType="cq:WorkflowTransition"
+            from="node1"
+            to="node2"/>
+    </transitions>
+</jcr:root>
+
+**************************************************
+
+HelloWorldModel.java
+
+package com.newsroom.core.models;
+
+import static org.apache.sling.api.resource.ResourceResolver.PROPERTY_RESOURCE_TYPE;
+
+import javax.annotation.PostConstruct;
+
+import org.apache.sling.api.resource.Resource;
+import org.apache.sling.api.resource.ResourceResolver;
+import org.apache.sling.models.annotations.Default;
+import org.apache.sling.models.annotations.Model;
+import org.apache.sling.models.annotations.injectorspecific.InjectionStrategy;
+import org.apache.sling.models.annotations.injectorspecific.OSGiService;
+import org.apache.sling.models.annotations.injectorspecific.SlingObject;
+import org.apache.sling.models.annotations.injectorspecific.ValueMapValue;
+
+import com.day.cq.wcm.api.Page;
+import com.day.cq.wcm.api.PageManager;
+
+import java.util.Optional;
+
+@Model(adaptables = Resource.class)
+public class HelloWorldModel {
+
+    @ValueMapValue(name=PROPERTY_RESOURCE_TYPE, injectionStrategy=InjectionStrategy.OPTIONAL)
+    @Default(values="No resourceType")
+    protected String resourceType;
+
+    @SlingObject
+    private Resource currentResource;
+    @SlingObject
+    private ResourceResolver resourceResolver;
+
+    private String message;
+
+    @PostConstruct
+    protected void init() {
+        PageManager pageManager = resourceResolver.adaptTo(PageManager.class);
+        String currentPagePath = Optional.ofNullable(pageManager)
+                .map(pm -> pm.getContainingPage(currentResource))
+                .map(Page::getPath).orElse("");
+
+        message = "Hello World!\n"
+            + "Resource type is: " + resourceType + "\n"
+            + "Current page is:  " + currentPagePath + "\n";
+    }
+
+    public String getMessage() {
+        return message;
+    }
+
+}
+
+*************************************************
+
+workflow/PageTitleWorkflowProcess.java 
+
+
+package com.myTraining.core.workflow;
+
+
+import com.adobe.granite.workflow.exec.WorkflowProcess;
+import com.adobe.granite.workflow.WorkflowSession;
+import com.adobe.granite.workflow.exec.WorkItem;
+import com.day.cq.wcm.api.Page;
+import com.day.cq.wcm.api.PageManager;
+import com.adobe.granite.workflow.metadata.MetaDataMap;
+import org.osgi.service.component.annotations.Component;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+@Component(
+        service = WorkflowProcess.class,
+        property = {"process.label=Print Page Title Process"}
+)
+public class PageTitleWorkflowProcess implements WorkflowProcess {
+    private static final Logger LOG = LoggerFactory.getLogger(PageTitleWorkflowProcess.class);
+
+    @Override
+    public void execute(WorkItem workItem, WorkflowSession workflowSession, MetaDataMap args) {
+        try {
+            String path = workItem.getWorkflowData().getPayload().toString();
+            PageManager pageManager = workflowSession.adaptTo(PageManager.class);
+            Page page = pageManager.getPage(path);
+            if (page != null) {
+                LOG.info("Page Title: {}", page.getTitle());
+            }
+        } catch (Exception e) {
+            LOG.error("Error occurred: {}", e.getMessage());
+        }
+    }
+}
